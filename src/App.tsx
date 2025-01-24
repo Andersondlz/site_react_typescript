@@ -1,28 +1,25 @@
-import React from 'react'
-import { Layout } from './components/Layout'
-import styled from 'styled-components'
 
-const Box = styled.div`
-  background-color: blue;
-  border-radius: 5px;
-  padding-left: 10px;
-`
+import { Provider } from './components/ui/provider'
+import { Box, Button, Center, Input } from "@chakra-ui/react"
+
 
 function App() {
-  return (
-    <React.Fragment>
-      <Layout>
-        <Box>
-          <h1>Faça o login</h1>
+  return (  
+    <Provider>
+      <Box minHeight="100vh" backgroundColor="#9413dc" display="flex" alignItems="center" justifyContent="center" flexDirection="column" gap={4}>
+        <Box backgroundColor="#ffffff" borderRadius={8} padding={8} color={"#000000"} >
+          <Center>
+            <h1>Faça o login</h1>
+          </Center>
+          <Input placeholder='email'/>
+          <Input placeholder='password'/>
+          <Center>
+            <Button variant="subtle" width={"100%"}>Entrar</Button>
+          </Center>
         </Box>
-        <label htmlFor="emailInput">Email</label>
-        <input type="email" name="" id="emailInput" />
-        <label htmlFor="passwordInput">Senha</label>
-        <input type="password" name="" id="passwordInput" />
-        <button>Entrar</button>
-      </Layout>
-    </React.Fragment>
-  )
+      </Box>
+    </Provider>
+  );
 }
 
 export default App
