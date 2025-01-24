@@ -14,7 +14,7 @@ function App() {
           <Input placeholder='email'/>
           <Input placeholder='password'/>
           <Center>
-            <Button variant="subtle" width={"100%"}>Entrar</Button>
+            <Button onClick=(login) variant="subtle" width={"100%"}>Entrar</Button>
           </Center>
         </Box>
       </Box>
