@@ -1,7 +1,7 @@
 
 import { Center } from "@chakra-ui/react/center"
 import { SimpleGrid } from "@chakra-ui/react/grid"
-import CardInfo from "../Cardinfo"
+import CardInfo from "../CardInfo"
 import { useEffect, useState } from "react"
 import { api } from "../api"
 
@@ -14,17 +14,17 @@ interface userData {
 }
 
 const Conta = () => {
-    const [userData, setUserData] = useState<null | userData>()
+    const [userData, setUserData] = useState <null | userData>()
 
     useEffect(() => {
         const getData = async () => {
             const data: unknown | userData = await api
-            setUserData(data)
+            setUserData(data as userData)
         }
         getData()
     }, [])
 
-    
+
 
     console.log(userData)
     return (

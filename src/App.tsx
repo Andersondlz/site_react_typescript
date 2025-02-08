@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './components/pages/home';
-import Conta from './components/pages/Conta';
+import Home from './components/pages/Home';
+import Conta from './components/pages/conta';
 import { Provider } from './components/ui/provider';
 import { Layout } from "./components/Layout"
 

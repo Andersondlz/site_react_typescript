@@ -20,7 +20,7 @@ export const Header = () => {
                         </Button>
                     </MenuTrigger>
                     <MenuContent>
-                        <MenuItem value="new-txt">Sistema</MenuItem>
+                        <MenuItem value="new-txt">Conta</MenuItem>
                         <MenuItem value="new-file">Ajuda...</MenuItem>
                     </MenuContent>
                 </MenuRoot>
