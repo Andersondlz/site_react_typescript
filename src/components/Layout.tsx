@@ -6,7 +6,7 @@ import { Box } from "@chakra-ui/react";
 export const Layout = ({ children }: { children: ReactNode }) => {
     return (
     
-        <Box minHeight="100vh" backgroundColor="#9413dc">
+        <Box minHeight="100vh" backgroundColor="#0e3267">
         <Header />
             {children}
         <Footer />
