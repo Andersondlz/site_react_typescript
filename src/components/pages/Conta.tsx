@@ -4,6 +4,8 @@ import { SimpleGrid } from "@chakra-ui/react/grid"
 import CardInfo from "../CardInfo"
 import { useEffect, useState } from "react"
 import { api } from "../api"
+import { ProgressCircle } from "@chakra-ui/react"
+import { useNavigate, useParams } from "react-router-dom"
 
 
 interface userData {
@@ -11,10 +13,11 @@ interface userData {
     password: string
     name: string
     balance: number
+    id: string
 }
 
 const Conta = () => {
-    const [userData, setUserData] = useState <null | userData>()
+    const [userData, setUserData] = useState<null | userData>()
 
     useEffect(() => {
         const getData = async () => {
@@ -24,14 +27,36 @@ const Conta = () => {
         getData()
     }, [])
 
+    const actualDate = new Date();
 
+    const { id } = useParams()
+    const navigate = useNavigate()
 
-    console.log(userData)
+    if (userData && id !== userData.id) {
+        navigate("/")
+    }
+
     return (
         <Center>
-            <SimpleGrid columns={2} gap={4} paddingTop={16}>
-                <CardInfo text="Informações do acesso" />
-                <CardInfo text="Informações da conta" />
+            <SimpleGrid columns={2} gap={7} paddingTop={16} padding={34}>
+                {
+                    userData === null || userData === undefined ? (
+                        <Center>
+                            <ProgressCircle.Root value={null} size="xl" strokeWidth="sm" colorScheme="teal">
+                                <ProgressCircle.Circle>
+                                    <ProgressCircle.Track />
+                                    <ProgressCircle.Range />
+                                </ProgressCircle.Circle>
+                            </ProgressCircle.Root>
+                        </Center>
+                    ) : (
+                        <>
+                            <CardInfo mainContent={`Bem vindo (a): ${userData?.name}`}
+                                content={`${actualDate.getDate()}/${actualDate.getMonth() + 1}/${actualDate.getFullYear()}  ${actualDate.getHours()}:${actualDate.getMinutes()}`} />
+                            <CardInfo mainContent={`Seu Saldo:`} content={`R$ ${userData?.balance} `} />
+                        </>
+                    )
+                }
             </SimpleGrid>
         </Center>
     )

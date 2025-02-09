@@ -1,13 +1,21 @@
 import { Box } from "@chakra-ui/react/box";
+import { Text } from "@chakra-ui/react";
 
 interface CardInfo {
-    text: string
+    mainContent: string,
+    content: string
 }
 
-const CardInfo = ({text}: CardInfo) => {
+const CardInfo = ({mainContent, content }: CardInfo) => {
     return (
-        <Box backgroundColor={"#ffffff"} padding={8} borderRadius="25px"  color={"#000000"} minHeight='125px' width={320}>
-            {text}
+        <Box backgroundColor={"#ffffff"} padding={10} borderRadius="25px"  color={"#000000"} minHeight='125px'>
+            <Text fontSize="2xl" fontWeight="bold" >
+                {mainContent}
+            </Text>
+            <Text fontSize="xl">
+                {content}
+            </Text>
+            
         </Box>
     )
 }   

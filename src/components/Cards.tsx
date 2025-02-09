@@ -13,7 +13,7 @@ export const Card = () => {
     return (
         <Box backgroundColor={"#ffffff"} borderRadius="25px" padding={8} color={"#000000"} >
             {/* {userData === null || userData === undefined ?  */}
-            <ProgressCircle.Root value={null} size="sm" strokeWidth="sm" colorScheme="teal">
+            {/* <ProgressCircle.Root value={null} size="sm" strokeWidth="sm" colorScheme="teal">
             <ProgressCircle.Circle>
             <ProgressCircle.Track />
             <ProgressCircle.Range />
@@ -24,7 +24,7 @@ export const Card = () => {
             <ProgressCircle.Track />
             <ProgressCircle.Range />
             </ProgressCircle.Circle>
-            </ProgressCircle.Root>
+            </ProgressCircle.Root> */}
             
             <Center>
                 <h1>Faça o login</h1>   
