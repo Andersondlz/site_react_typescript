@@ -2,10 +2,11 @@
 import { Center } from "@chakra-ui/react/center"
 import { SimpleGrid } from "@chakra-ui/react/grid"
 import CardInfo from "../CardInfo"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { api } from "../api"
 import { ProgressCircle } from "@chakra-ui/react"
 import { useNavigate, useParams } from "react-router-dom"
+import { AppContext } from '../AppContext'
 
 
 interface userData {
@@ -18,6 +19,9 @@ interface userData {
 
 const Conta = () => {
     const [userData, setUserData] = useState<null | userData>()
+
+    const context = useContext(AppContext);
+    console.log('retorno do header', context)
 
     useEffect(() => {
         const getData = async () => {
