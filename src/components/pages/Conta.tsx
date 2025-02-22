@@ -19,9 +19,14 @@ interface userData {
 
 const Conta = () => {
     const [userData, setUserData] = useState<null | userData>()
+    const { id } = useParams()
+    const navigate = useNavigate()
 
-    const context = useContext(AppContext);
-    console.log('retorno do header', context)
+    const { isLoggedIn } = useContext(AppContext);
+    console.log('retorno do header', isLoggedIn)
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    !isLoggedIn && navigate("/")
 
     useEffect(() => {
         const getData = async () => {
@@ -32,9 +37,6 @@ const Conta = () => {
     }, [])
 
     const actualDate = new Date();
-
-    const { id } = useParams()
-    const navigate = useNavigate()
 
     if (userData && id !== userData.id) {
         navigate("/")
