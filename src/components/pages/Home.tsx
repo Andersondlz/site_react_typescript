@@ -1,13 +1,26 @@
 import { Box, Center, Input } from "@chakra-ui/react"
 import { Image } from "@chakra-ui/react"
 import { Card } from '../Cards';
-import { useState } from "react";
+import {  useContext, useState } from "react";
 import { PasswordInput } from "../ui/password-input";
 import DButton from "../DButton";
 import { login } from "../../services/login";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../AppContext";
 
 const Home = () => {
     const [email, setEmail] = useState<string>('')
+    const { setIsLoggedIn } = useContext(AppContext);
+    const navigate = useNavigate()
+
+    const validateUser = async (email: string) => {
+        const loggedIn = await login(email)
+        if (!loggedIn) {
+            alert('Email invalido')
+        }
+        setIsLoggedIn(true)
+        navigate('/conta/1')
+    }
     return (
         <Box minHeight="100vh" backgroundColor="#9413dc" display="flex" alignItems="center" justifyContent="center" flexDirection="column" gap={4}>
             <Image src="../src/assets/img/DioBankT.png" alt="Imagem DIO Banck " width="180px" />
@@ -34,7 +47,9 @@ const Home = () => {
             <Input placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
             <PasswordInput placeholder='senha'></PasswordInput>
             <Center>
-                <DButton onClick={() => login(email)}></DButton>
+                <DButton 
+                    onClick={() => validateUser(email)}>
+                </DButton>
             </Center>
         </Card>
         

@@ -1,10 +1,10 @@
-import { api } from "../components/api"
+import { api } from "../components/api";
 
-export const login =  async (email: string): Promise<void> => {
+export const login =  async (email: string): Promise<boolean> => {
     const data: any = await api
 
     if(email !== data.email) {
-        return alert("Email ou senha incorretos")
+        return false
     }
-    alert(`Bem vindo ${email}  !`)
+    return true
 }

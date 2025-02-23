@@ -23,7 +23,6 @@ const Conta = () => {
     const navigate = useNavigate()
 
     const { isLoggedIn } = useContext(AppContext);
-    console.log('retorno do header', isLoggedIn)
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !isLoggedIn && navigate("/")
