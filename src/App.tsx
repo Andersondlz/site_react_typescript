@@ -1,22 +1,21 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './components/pages/Home';
-import Conta from './components/pages/Conta';
+import { BrowserRouter} from 'react-router-dom';
+
 import { Provider } from './components/ui/provider';
 import { Layout } from "./components/Layout"
-import ContaInfo from './components/pages/ContaInfo';
 import { AppContexProvider } from './components/AppContext';
+import MainRoutes from './routes';
+import { getAllLocalStorage } from './services/storage';
 
 function App() {
+
+  const localStorage = getAllLocalStorage();
+  console.log(localStorage)
   return (
     <BrowserRouter>
       <AppContexProvider>
         <Provider>
           <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} /> 
-              <Route path="/conta/:id" element={<Conta />} /> 
-              <Route path="/containfo" element={<ContaInfo />} /> 
-            </Routes>
+            <MainRoutes />
           </Layout>
         </Provider>
       </AppContexProvider>
