@@ -7,6 +7,7 @@ import DButton from "../DButton";
 import { login } from "../../services/login";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContext";
+import { changeLocalStorage } from "../../services/storage";
 
 const Home = () => {
     const [email, setEmail] = useState<string>('')
@@ -20,6 +21,7 @@ const Home = () => {
             return
         }
         setIsLoggedIn(true)
+        changeLocalStorage({ login: true })
         navigate('/conta/1')
     }
     return (

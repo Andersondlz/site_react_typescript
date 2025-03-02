@@ -5,11 +5,13 @@ import { Avatar } from '../ui/avatar'
 import { AppContext } from '../AppContext'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { changeLocalStorage } from '../../services/storage'
 
 export const Header = () => {
     const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
     const navegate = useNavigate();
     const logout = () => {
+        changeLocalStorage({ login: false })
         setIsLoggedIn(false);
         navegate("/")
     }
